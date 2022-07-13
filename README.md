@@ -82,6 +82,10 @@ User/Group:
     -characters - [] // group can have many characters
     -groups - [] // group can have many users
 
+# API reference
+
+- https://www.dnd5eapi.co/
+
 # Routes Table
 |   NAME   |     PATH       |   HTTP VERB     |            PURPOSE                   |
 |----------|----------------|-----------------|--------------------------------------| 
@@ -93,5 +97,6 @@ User/Group:
 | Update   | /dndconnect/:id|      PUT        | Updates a single character           |
 | Destroy  | /dndconnect/:id|      DELETE     | Deletes a single character           |
 
-# Wireframes & Initial Planning documents
-![Wireframe](https://github.com/Zene09/project-2-DnDConnect/blob/d374c6622c3e6fb28bf5398675c069893af2bf61/project-2.pdf)
+# Wireframes & ERD
+![Wireframe](Wireframe.jpg)
+![ERD](ERD.jpg)
