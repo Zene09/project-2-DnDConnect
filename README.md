@@ -31,7 +31,7 @@ As a user ( I should be able to):
     - return success
 
 # Functionality
-Character:
+- Character:
 - should be able to "kill" a character after failed death saves; NOT delete
     - query for a single character - by ID
     - create a boolean for alive/death
@@ -49,9 +49,9 @@ Character:
             - default: false, true upon being checked
             - then show route racial traits
             - assign saved selections to features & traits
-        *stretch goal: allow for homebrew & expansive race/classes*
-        *stretch goal: add user groups during character creation to load in a character to that group*
-User/Group:
+        - *stretch goal: allow for homebrew & expansive race/classes*
+        - *stretch goal: add user groups during character creation to load in a character to that group*
+- User/Group:
 - should be able to add users to a group
     - query by ._id
     - add/move user under the group collection
