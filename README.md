@@ -94,4 +94,4 @@ User/Group:
 | Destroy  | /dndconnect/:id|      DELETE     | Deletes a single character           |
 
 # Wireframes & Initial Planning documents
-![Wireframe](project-2.pdf)
+![Wireframe](https://github.com/Zene09/project-2-DnDConnect/blob/d374c6622c3e6fb28bf5398675c069893af2bf61/project-2.pdf)
