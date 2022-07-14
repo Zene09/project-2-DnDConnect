@@ -1,4 +1,4 @@
-const races = [
+const Race = [
     {
         "index": "dragonborn",
         "name": "Dragonborn",

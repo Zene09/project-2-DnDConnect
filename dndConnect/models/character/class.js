@@ -1,4 +1,4 @@
-const classes = [
+const Class = [
     {
         "index": "barbarian",
         "name": "Barbarian",
