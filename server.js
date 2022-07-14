@@ -6,6 +6,7 @@ require('dotenv').config()
 const express = require('express')
 const morgan = require('morgan')
 const methodOverride = require('method-override')
+const characterRoutes = require('./dndConnect/controllers/character_routes')
 
 ////////////////////////////////////////////
 // Create our express application object
@@ -39,10 +40,15 @@ app.use(
 	})
 )
 
+////////////////////////////////////////////
+// Routes
+////////////////////////////////////////////
+app.use('/character-views', characterRoutes)
 // set up server to let me know it is running
 // localhost:3000/
 app.get('/', (req, res) => {
-	res.send('"Can we please play D&D now?" - Will Byers, Stranger Things Season 3')
+	// res.send('"Can we please play D&D now?" - Will Byers, Stranger Things Season 3') route works!
+    res.redirect('/character-views')
 })
 
 ////////////////////////////////////////////

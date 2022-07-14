@@ -79,8 +79,8 @@ As a user ( I should be able to):
 
 - Group
     -name - string (required)
-    -characters - [] // group can have many characters
-    -groups - [] // group can have many users
+    -characters - group can have many characters
+    -groups - group can have many users
 
 # API reference
 
