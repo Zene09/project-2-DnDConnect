@@ -1,9 +1,10 @@
 // use the already connected mongoose from connection.js
 const mongoose = require('../connection')
-
+const Class = require('./class')
+const Race = require('./race')
 
 // TODO: add comment last
-// ASK: can models, not Schema, be sub-docs? in reference to class and race
+
 
 // Add keys into mongoose
 const { Schema, model } = mongoose
@@ -11,6 +12,9 @@ const { Schema, model } = mongoose
 const characterSchema = new Schema(
     {
         name: String,
+        // class: classSchema,
+        level: Number,
+        // race: raceSchema,
         groups: {
             type: Schema.Types.ObjectId, // a single group can have this character
             ref: 'Group', // referencing group model
