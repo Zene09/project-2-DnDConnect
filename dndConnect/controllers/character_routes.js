@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
     // mongoose find() finds a collection
     Race.find({})
     .then(races => {
-        res.render('characters/index')
+        res.render('characters/index', { races })
     })
     .catch(err => {
         res.json(err)

@@ -42,3 +42,5 @@ const characterSchema = new Schema(
 
 // make this into a model - characters
 const Character = model('Character', characterSchema)
+
+module.exports = Character

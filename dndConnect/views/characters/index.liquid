@@ -2,8 +2,16 @@
 {% block content %}
 <div>
     <h2>Character Index</h2>
-    <div class="row">
-
+    
+    {% for race in races %}
+    <div class="card" style="width: 18rem">
+        <h5 class="card-header">{{race.name}}</h5>
+        <div class="card-body">
+            <p class="card-text">
+                This is a {{race.name}}!
+            </p>
+        </div>
     </div>
+{% endfor %}
 </div>
 {% endblock %}
