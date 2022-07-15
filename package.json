@@ -1,12 +1,12 @@
 {
-  "name": "project-2-DnDConnect",
+  "name": "project-2-dndconnect",
   "version": "1.0.0",
   "description": "MVP:",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "seed": "node models/seed"
+    "seed": "node models/seedClass.js models/seedRace.js"
   },
   "repository": {
     "type": "git",
