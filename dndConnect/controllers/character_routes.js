@@ -14,12 +14,12 @@ router.get('/', (req, res) => {
     // mongoose find() finds a collection
     Race.find({})
     .then(races => {
-        res.send({ races })
+        res.render('characters/index')
     })
     .catch(err => {
         res.json(err)
     })
-    console.log(req)
+    console.log(res)
 })
 
 

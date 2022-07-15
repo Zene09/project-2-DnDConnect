@@ -43,12 +43,12 @@ app.use(
 ////////////////////////////////////////////
 // Routes
 ////////////////////////////////////////////
-app.use('/character-views', characterRoutes)
+app.use('/views', characterRoutes)
 // set up server to let me know it is running
 // localhost:3000/
 app.get('/', (req, res) => {
 	// res.send('"Can we please play D&D now?" - Will Byers, Stranger Things Season 3') route works!
-    res.redirect('/character-views')
+    res.redirect('/views')
 })
 
 ////////////////////////////////////////////
