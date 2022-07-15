@@ -12,9 +12,17 @@ const { Schema, model } = mongoose
 const characterSchema = new Schema(
     {
         name: String,
-        // class: classSchema,
+        class: {
+            type: Schema.Types.ObjectId,
+            ref: 'Class',
+            required: true,
+        },
         level: Number,
-        // race: raceSchema,
+        race: {
+            type: Schema.Types.ObjectId,
+            ref: 'race',
+            required: true,
+        },
         groups: {
             type: Schema.Types.ObjectId, // a single group can have this character
             ref: 'Group', // referencing group model
@@ -22,6 +30,7 @@ const characterSchema = new Schema(
         owner: {
             type: Schema.Types.ObjectId, // a single user can have this character
             ref: 'User', // referencing user model
+            required: true,
         },
         alive: Boolean
         // TODO: add schemas after user and group are built
