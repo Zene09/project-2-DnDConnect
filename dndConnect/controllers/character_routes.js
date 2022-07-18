@@ -6,15 +6,25 @@ const Character = require('../models/character/character-base')
 const Race = require('../models/character/race')
 const Class = require('../models/character/class')
 
+// create route - new character
+// get the form for a new character
+router.get('/new', (req, res) => {
+    res.render('characters/new')
+})
+// post character to the db 
+// TODO: need to assign all required schema fields before creating a new character
+// TIP (from DnD API): there's a schema form for choices, use it
+
+
 // index route
 router.get('/', (req, res) => {
     // test route:
     // res.send('Here are my characters')
     // console.log(Race)
     // mongoose find() finds a collection
-    Race.find({})
-        .then(races => {
-            res.render('characters/index', { races })
+    Character.find({})
+        .then(characters => {
+            res.render('characters/index', { characters })
         })
         .catch(err => {
             res.json(err)
@@ -25,11 +35,11 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
     const dndId = req.params.id
 
-    Race.findById(dndId)
+    Character.findById(dndId)
     // send back json
-        .then(race => {
+        .then(character => {
             // TODO: add in user specs after user routes created
-            res.render('characters/show', { race })
+            res.render('characters/show', { character })
         })
         .catch(err => {
             res.json(err)

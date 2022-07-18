@@ -5,13 +5,14 @@
     
     {% for race in races %}
     <div class="card" style="width: 18rem">
-        <h5 class="card-header">{{race.name}}</h5>
+        <h5 class="card-header">{{character.name}}</h5>
         <div class="card-body">
             <p class="card-text">
                 {{race.name}}
             </p>
-            <a href="/characters/{{race._id}}" class="btn">View {{race.name}}</a>
+            <a href="/characters/{{character._id}}" class="btn">View {{character.name}}</a>
         </div>
+        <a href="/characters/new" class="btn">Create A New Character</a>
     </div>
 {% endfor %}
 </div>
