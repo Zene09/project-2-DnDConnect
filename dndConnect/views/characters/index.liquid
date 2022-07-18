@@ -8,8 +8,9 @@
         <h5 class="card-header">{{race.name}}</h5>
         <div class="card-body">
             <p class="card-text">
-                This is a {{race.name}}!
+                {{race.name}}
             </p>
+            <a href="/characters/{{race._id}}" class="btn">View {{race.name}}</a>
         </div>
     </div>
 {% endfor %}

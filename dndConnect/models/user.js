@@ -22,8 +22,10 @@ const userSchema = new Schema({
     timestamps: true
 })
 
-// create a model from user
+// make a user model with the userSchema
 const User = model('User', userSchema)
 
-// export this schema
+///////////////////////////////////////
+// export our user model
+///////////////////////////////////////
 module.exports = User
