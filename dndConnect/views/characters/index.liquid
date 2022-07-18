@@ -1,0 +1,18 @@
+{% layout 'layout.liquid' %}
+{% block content %}
+<div>
+    <h2>Character Index</h2>
+    
+    {% for race in races %}
+    <div class="card" style="width: 18rem">
+        <h5 class="card-header">{{race.name}}</h5>
+        <div class="card-body">
+            <p class="card-text">
+                {{race.name}}
+            </p>
+            <a href="/characters/{{race._id}}" class="btn">View {{race.name}}</a>
+        </div>
+    </div>
+{% endfor %}
+</div>
+{% endblock %}
