@@ -8,16 +8,36 @@ const Class = require('../models/character/class')
 
 // create route - new character
 // get the form for a new character
-router.get('/new', (req, res) => {
-    res.render('characters/new')
+router.get('/new', async (req, res) => {
+    const classes = await Class.find({})
+    const races = await Race.find({})
+    const characters = await Character.find({})
+        .then(characters => {
+            res.render('characters/new', { characters, races, classes })
+        })
 })
 // post character to the db 
+router.post('/', (req, res) => {
+    req.body.race = req.body.race
+    req.body.class = req.body.class
+
+    req.body.owner = req.session.userId
+    Character.create(req.body)
+        .then(character => {
+            console.log(character)
+            res.redirect('/characters')
+        })
+        .catch(err => {
+            res.json(err)
+        })
+})
 // TODO: need to assign all required schema fields before creating a new character
 // TIP (from DnD API): there's a schema form for choices, use it
 
 
 // index route
 router.get('/', (req, res) => {
+    
     // test route:
     // res.send('Here are my characters')
     // console.log(Race)

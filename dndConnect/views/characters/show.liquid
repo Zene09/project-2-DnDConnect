@@ -4,7 +4,20 @@
     <h2>Character Details</h2>
     <div class="container-md">
         <article>
-            <h2>{{character.name}}</h2>
+            <div class="card" style="width: 100rem">
+                <h5 class="card-header">{{character.name}}</h5>
+                <div class="card-body">
+                    <p class="card-text">
+                        {{character.race}}
+                    </p>
+                    <p class="card-text">
+                        {{character.class}}
+                    </p>
+                    <p class="card-text">
+                        {{character.level}}
+                    </p>
+                    <a href="/characters" class="btn">Back to Home</a>
+                </div>
         </article>
     </div>
 </div>

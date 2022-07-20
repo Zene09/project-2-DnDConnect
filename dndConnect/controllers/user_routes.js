@@ -76,7 +76,7 @@ router.post('/login', async (req, res) => {
                 } else {
                     // if password incorrect
                 res.json({ error: 'username or password incorrect' })
-                res.redirect('users/login')
+                res.redirect('/login')
             }
         }
     })
