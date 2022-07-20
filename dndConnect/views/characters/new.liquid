@@ -1,0 +1,52 @@
+{% layout 'layout.liquid' %}
+
+{% block content %}
+<div class="container-lg">
+    <form action="/characters" method="POST">
+        <fieldset>
+            <legend>Create A New Character</legend>
+            <label class="form-label">Name:</label>
+            <input 
+                class="form-control" 
+                type="text" 
+                name="name" 
+                placeholder="enter name"
+            >
+            <label class="form-label">Level:</label>
+            <input 
+            class="form-control" 
+            type="number" 
+            name="level" 
+            placeholder="enter level"
+            >
+            <label class="form-label">Race:</label>
+            <select class="form-select">
+                <option selected>Select a Race</option>
+                {% for race in races %}
+                <option value="race">{{race.name}}</option>
+                {% endfor %}
+              </select>
+              
+            <label class="form-label">Class:</label>
+            <select class="form-select">
+                <option selected>Select a Class</option>
+                {% for class in classes %}
+                <option value="class">{{class.name}}</option>
+                {% endfor %}
+              </select>
+
+            <label class="form-label">Alive:</label>
+            <input 
+            class="form-check-input" 
+            type="checkbox" 
+            name="Alive"
+            >
+        </fieldset>
+        <input 
+            type="submit" 
+            value="Create" 
+            class="btn btn-success"
+        >
+    </form>
+</div>
+{% endblock %}

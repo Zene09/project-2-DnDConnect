@@ -1,0 +1,33 @@
+{% layout 'layout.liquid' %}
+
+{% block content %}
+<div class="container-md">
+    <form action="/characters/{{character._id}}?_method=PUT" method="POST">
+        <fieldset>
+            <legend>Edit Character</legend>
+            <label class="form-label">Level:</label>
+            <input 
+                class="form-control" 
+                type="number" 
+                name="level" 
+                placeholder="enter level"
+            >
+            <label class="form-label">Alive:</label>
+            <input 
+                class="form-check-input" 
+                type="checkbox" 
+                name="Alive"
+                {% if character.alive %} 
+                    checked
+                {% endif %}
+            >
+        </fieldset>
+        <input 
+            type="submit" 
+            value="Save Changes" 
+            class="btn btn-success"
+        >
+        <a href="/characters" class="btn btn-gray-600">Nevermind</a>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% layout 'layout.liquid' %}
+{% block content %}
+<div>
+    <h2>Character Index</h2>
+    
+    {% for character in characters %}
+    <div class="card" style="width: 18rem">
+        <h5 class="card-header">{{character.name}}</h5>
+        <div class="card-body">
+            <p class="card-text">
+                {{character.level}}
+            </p>
+            <a href="/characters/{{character._id}}" class="btn">View {{character.name}}</a>
+            <form action="/characters/{{character._id}}?_method=DELETE" method="POST">
+                <input type="submit" value="Delete Character" class="btn btn-danger">
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="container-md">
+    <a href="/characters/new" class="btn btn-success">Create A New Character</a>
+    <form action="/characters?_method=DELETE" method="POST">
+        <input type="submit" value="Delete ALL Characters" class="btn btn-danger">
+    </form>
+    </div>
+</div>
+{% endblock %}

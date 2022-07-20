@@ -1,0 +1,36 @@
+{
+  "name": "project-2-dndconnect",
+  "version": "1.0.0",
+  "description": "MVP:",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "seed": "node models/seedClass.js models/seedRace.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zene09/project-2-DnDConnect.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Zene09/project-2-DnDConnect/issues"
+  },
+  "homepage": "https://github.com/Zene09/project-2-DnDConnect#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-mongo": "^4.6.0",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-session": "^1.17.3",
+    "liquid-express-views": "^1.0.8",
+    "method-override": "^3.0.0",
+    "mongoose": "^6.4.4",
+    "morgan": "^1.10.0",
+    "node-fetch": "^2.6.7",
+    "nodemon": "^2.0.19",
+    "update": "^0.7.4"
+  }
+}

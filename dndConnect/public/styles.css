@@ -1,0 +1,17 @@
+body {
+    background-color: #e0d8c1;
+    font-family: 'Berkshire Swash', cursive;
+    color:#570000;
+}
+
+h2, legend {
+   color: black; 
+}
+
+.card-text {
+    color: #1c1c1c;
+}
+
+.btn {
+    margin: 5px;
+}
