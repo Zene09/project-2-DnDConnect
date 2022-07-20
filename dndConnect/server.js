@@ -34,7 +34,7 @@ app.use(
 	session({
 		secret: process.env.SECRET,
 		store: MongoStore.create({
-			mongoUrl: process.env.DATABASE_URI
+			mongoUrl: process.env.MONGODB_URI
 		}),
 		saveUninitialized: true,
 		resave: false
@@ -49,7 +49,6 @@ app.use('/users', userRoutes)
 // set up server to let me know it is running
 // localhost:3000/
 app.get('/', (req, res) => {
-	// res.send('"Can we please play D&D now?" - Will Byers, Stranger Things Season 3') // route works!
     res.redirect('/characters')
 })
 
