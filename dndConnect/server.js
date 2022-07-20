@@ -7,6 +7,7 @@ const express = require('express')
 const morgan = require('morgan')
 const methodOverride = require('method-override')
 const characterRoutes = require('./controllers/character_routes')
+const userRoutes = require('./controllers/user_routes')
 
 ////////////////////////////////////////////
 // Create our express application object
@@ -44,6 +45,7 @@ app.use(
 // Routes
 ////////////////////////////////////////////
 app.use('/characters', characterRoutes)
+app.use('/users', userRoutes)
 // set up server to let me know it is running
 // localhost:3000/
 app.get('/', (req, res) => {

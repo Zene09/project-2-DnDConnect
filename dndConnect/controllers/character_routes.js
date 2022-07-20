@@ -1,20 +1,109 @@
 const express = require('express')
-
 const router = express.Router()
 
 const Character = require('../models/character/character-base')
 const Race = require('../models/character/race')
 const Class = require('../models/character/class')
 
+// delete all characters
+router.delete('/', (req, res) => {
+    const dndId = req.params.id
+
+    Character.deleteMany({})
+        .then(character => {
+            res.redirect('/characters')
+        })
+        .catch(err => {
+            res.json(err)
+        })
+})
+
+// delete one character
+router.delete('/:id', (req, res) => {
+    const dndId = req.params.id
+
+    Character.findByIdAndRemove(dndId)
+        .then(character => {
+            res.redirect('/characters')
+        })
+        .catch(err => {
+            res.json(err)
+        })
+})
+
+
+// GET route for displaying an update form
+router.get('/:id/edit', (req, res) => {
+    const dndId = req.params.id
+
+    Character.findById(dndId)
+        .then(character => {
+            res.render('characters/edit', { character })
+        })
+        .catch(err => {
+            res.json(err)
+        })
+})
+
+
+// update
+router.put('/:id', (req, res) => {
+    const dndId = req.params.id
+
+    req.body.alive = req.body.alive === 'on' ? true : false
+
+
+    Character.findByIdAndUpdate(dndId, req.body, { new: true })
+        .then(character => {
+            console.log(character)
+            res.redirect(`/characters/${character._id}`)
+        })
+        .catch(err => {
+            res.json(err)
+        })
+})
+
+
+// create route - new character
+// get the form for a new character
+router.get('/new', async (req, res) => {
+    const classes = await Class.find({})
+    const races = await Race.find({})
+    const characters = await Character.find({})
+        .then(characters => {
+            res.render('characters/new', { characters, races, classes })
+        })
+})
+// post character to the db 
+router.post('/', (req, res) => {
+    req.body.alive = req.body.alive === 'on' ? true : false
+
+    // Issue: All characters are still saying deceased, why?
+
+    req.body.owner = req.session.userId
+    Character.create(req.body)
+        .then(character => {
+            console.log(character)
+            res.redirect('/characters')
+        })
+        .catch(err => {
+            res.json(err)
+        })
+})
+
+// TIP (from DnD API): there's a schema form for choices, use it
+
+
 // index route
 router.get('/', (req, res) => {
+    
     // test route:
     // res.send('Here are my characters')
     // console.log(Race)
     // mongoose find() finds a collection
-    Race.find({})
-        .then(races => {
-            res.render('characters/index', { races })
+    Character.find({})
+        .then(characters => {
+            res.render('characters/index', { characters })
         })
         .catch(err => {
             res.json(err)
@@ -25,11 +114,11 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
     const dndId = req.params.id
 
-    Race.findById(dndId)
+    Character.findById(dndId)
     // send back json
-        .then(race => {
+        .then(character => {
             // TODO: add in user specs after user routes created
-            res.render('characters/show', { race })
+            res.render('characters/show', { character })
         })
         .catch(err => {
             res.json(err)

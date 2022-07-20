@@ -13,26 +13,22 @@ const characterSchema = new Schema(
     {
         name: String,
         class: {
-            type: Schema.Types.ObjectId,
+            type: Schema.Types.String,
             ref: 'Class',
-            required: true,
+            // required: true, ; not working, add when fixed
         },
         level: Number,
         race: {
-            type: Schema.Types.ObjectId,
-            ref: 'race',
-            required: true,
-        },
-        groups: {
-            type: Schema.Types.ObjectId, // a single group can have this character
-            ref: 'Group', // referencing group model
+            type: Schema.Types.String,
+            ref: 'Race',
+            // required: true,; not working, add when fixed
         },
         owner: {
             type: Schema.Types.ObjectId, // a single user can have this character
             ref: 'User', // referencing user model
             required: true,
         },
-        alive: Boolean
+        alive: Boolean,
         // TODO: add schemas after user and group are built
     },
     {

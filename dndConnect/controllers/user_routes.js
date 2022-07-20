@@ -5,7 +5,7 @@ const express = require('express')
 const User = require('../models/user')
 
 // add bcrypt to encrypt passwords
-const bcrypt = require('bycryptjs')
+const bcrypt = require('bcryptjs')
 
 /////
 // create router
@@ -38,7 +38,7 @@ router.post('/signup', async (req, res) => {
     // on success, redirect to the login page
         .then(user => {
         console.log('this is the new user', user)
-        res.redirect('/users/login')
+        res.redirect('users/login')
     })
     // on error
     .catch(error => {
@@ -50,7 +50,7 @@ router.post('/signup', async (req, res) => {
 // create 2 login routes, GET and POST
 // GET - shows the form
 router.get('/login', (req, res) => {
-    res.render('user/login')
+    res.render('users/login')
 })
 
 // POST - logs user in and creates the session
@@ -68,8 +68,33 @@ router.post('/login', async (req, res) => {
                 const result = await bcrypt.compare(password, user.password)
 
                 if (result) {
-                    
-                }
+                    req.session.username = username
+                    req.session.loggedIn = true
+                    req.session.userId = user._id
+                    console.log('this is the session after login', req.session)
+                    res.redirect('/characters')    
+                } else {
+                    // if password incorrect
+                res.json({ error: 'username or password incorrect' })
+                res.redirect('/login')
             }
-        })
+        }
+    })
 })
+
+// logout route
+// can be a GET that calls destroy on our session
+// we can add an 'are you sure' page if there is time
+router.get('/logout', (req, res) => {
+    // destroy the session and redirect to the main page
+    req.session.destroy(ret => {
+        console.log('this is returned from req.session.destroy', ret)
+        console.log('session has been destroyed')
+        console.log(req.session)
+        res.redirect('/characters')
+    })
+})
+///////////////////////////////////////
+// export our router
+///////////////////////////////////////
+module.exports = router
