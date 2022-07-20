@@ -11,9 +11,17 @@
                 {{character.level}}
             </p>
             <a href="/characters/{{character._id}}" class="btn">View {{character.name}}</a>
+            <form action="/characters/{{character._id}}?_method=DELETE" method="POST">
+                <input type="submit" value="Delete Character" class="btn btn-danger">
+            </form>
         </div>
         {% endfor %}
-        <a href="/characters/new" class="btn btn-success">Create A New Character</a>
+    </div>
+    <div class="container-md">
+    <a href="/characters/new" class="btn btn-success">Create A New Character</a>
+    <form action="/characters?_method=DELETE" method="POST">
+        <input type="submit" value="Delete ALL Characters" class="btn btn-danger">
+    </form>
     </div>
 </div>
 {% endblock %}

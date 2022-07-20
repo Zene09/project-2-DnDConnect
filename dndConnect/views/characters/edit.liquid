@@ -5,13 +5,6 @@
     <form action="/characters/{{character._id}}?_method=PUT" method="POST">
         <fieldset>
             <legend>Edit Character</legend>
-            <label class="form-label">Name:</label>
-            <input 
-                class="form-control" 
-                type="text" 
-                name="name" 
-                placeholder="enter name"
-            >
             <label class="form-label">Level:</label>
             <input 
                 class="form-control" 
@@ -24,7 +17,9 @@
                 class="form-check-input" 
                 type="checkbox" 
                 name="Alive"
-                value="leave unchecked if Alive"
+                {% if character.alive %} 
+                    checked
+                {% endif %}
             >
         </fieldset>
         <input 
@@ -32,7 +27,7 @@
             value="Save Changes" 
             class="btn btn-success"
         >
-        <a href="/fruits" class="btn btn-gray-600">Nevermind</a>
+        <a href="/characters" class="btn btn-gray-600">Nevermind</a>
     </form>
 </div>
 {% endblock %}

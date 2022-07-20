@@ -1,10 +1,68 @@
 const express = require('express')
-
 const router = express.Router()
 
 const Character = require('../models/character/character-base')
 const Race = require('../models/character/race')
 const Class = require('../models/character/class')
+
+// delete all characters
+router.delete('/', (req, res) => {
+    const dndId = req.params.id
+
+    Character.deleteMany({})
+        .then(character => {
+            res.redirect('/characters')
+        })
+        .catch(err => {
+            res.json(err)
+        })
+})
+
+// delete one character
+router.delete('/:id', (req, res) => {
+    const dndId = req.params.id
+
+    Character.findByIdAndRemove(dndId)
+        .then(character => {
+            res.redirect('/characters')
+        })
+        .catch(err => {
+            res.json(err)
+        })
+})
+
+
+// GET route for displaying an update form
+router.get('/:id/edit', (req, res) => {
+    const dndId = req.params.id
+
+    Character.findById(dndId)
+        .then(character => {
+            res.render('characters/edit', { character })
+        })
+        .catch(err => {
+            res.json(err)
+        })
+})
+
+
+// update
+router.put('/:id', (req, res) => {
+    const dndId = req.params.id
+
+    req.body.alive = req.body.alive === 'on' ? true : false
+
+
+    Character.findByIdAndUpdate(dndId, req.body, { new: true })
+        .then(character => {
+            console.log(character)
+            res.redirect(`/characters/${character._id}`)
+        })
+        .catch(err => {
+            res.json(err)
+        })
+})
+
 
 // create route - new character
 // get the form for a new character
@@ -18,8 +76,9 @@ router.get('/new', async (req, res) => {
 })
 // post character to the db 
 router.post('/', (req, res) => {
-    req.body.race = req.body.race
-    req.body.class = req.body.class
+    req.body.alive = req.body.alive === 'on' ? true : false
+
+    // Issue: All characters are still saying deceased, why?
 
     req.body.owner = req.session.userId
     Character.create(req.body)
@@ -31,7 +90,7 @@ router.post('/', (req, res) => {
             res.json(err)
         })
 })
-// TODO: need to assign all required schema fields before creating a new character
+
 // TIP (from DnD API): there's a schema form for choices, use it
 
 

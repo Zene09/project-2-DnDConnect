@@ -15,13 +15,13 @@ const characterSchema = new Schema(
         class: {
             type: Schema.Types.String,
             ref: 'Class',
-            required: true,
+            // required: true, ; not working, add when fixed
         },
         level: Number,
         race: {
             type: Schema.Types.String,
             ref: 'Race',
-            required: true,
+            // required: true,; not working, add when fixed
         },
         owner: {
             type: Schema.Types.ObjectId, // a single user can have this character

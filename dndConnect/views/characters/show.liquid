@@ -5,18 +5,26 @@
     <div class="container-md">
         <article>
             <div class="card" style="width: 100rem">
-                <h5 class="card-header">{{character.name}}</h5>
+                <h4 class="card-header">{{character.name}}</h4>
                 <div class="card-body">
-                    <p class="card-text">
-                        {{character.race}}
-                    </p>
-                    <p class="card-text">
-                        {{character.class}}
-                    </p>
-                    <p class="card-text">
-                        {{character.level}}
-                    </p>
+                    <h3 class="card-text">
+                        Race: {{character.race}}
+                    </h3>
+                    <h3 class="card-text">
+                        Class: {{character.class}}
+                    </h3>
+                    <h3 class="card-text">
+                        Level: {{character.level}}
+                    </h3>
+                    <h3>
+                        {% if character.alive %}
+                            Alive
+                        {% else %}
+                            Deceased
+                        {% endif %}
+                    </h3>
                     <a href="/characters" class="btn">Back to Home</a>
+                    <a href="/characters/{{character._id}}/edit" class="btn">Edit Character</a>
                 </div>
         </article>
     </div>

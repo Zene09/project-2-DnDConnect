@@ -11,3 +11,7 @@ h2, legend {
 .card-text {
     color: #1c1c1c;
 }
+
+.btn {
+    margin: 5px;
+}
