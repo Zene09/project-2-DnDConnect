@@ -14,12 +14,12 @@ const config = {
 }
 
 // now connect mongoDB to mongoose
-mongoose.connect(DATABASE_URI, config)
+mongoose.connect(MONGODB_URI, config)
 
 // open and close db connection
 mongoose.connection
-    .on('open', () => console.log('Connected to Mongoose'))
-    .on('close', () => console.log('Disconnected from Mongoose'))
+    .on('open', () => console.log('Connected to database'))
+    .on('close', () => console.log('Disconnected from database'))
     .on('error', err => console.error(err))
 
 module.exports = mongoose
