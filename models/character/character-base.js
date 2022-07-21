@@ -29,7 +29,7 @@ const characterSchema = new Schema(
             required: true,
         },
         alive: Boolean,
-        // TODO: add schemas after user and group are built
+        // TODO: add schemas after group is built
     },
     {
         timestamps: true,

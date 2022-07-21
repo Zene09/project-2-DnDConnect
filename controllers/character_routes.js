@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+// const fetch = require('node-fetch')
 
 const Character = require('../models/character/character-base')
 const Race = require('../models/character/race')
@@ -73,6 +74,9 @@ router.get('/new', async (req, res) => {
         .then(characters => {
             res.render('characters/new', { characters, races, classes })
         })
+        .catch(err => {
+            res.json(err)
+        })
 })
 // post character to the db 
 router.post('/', (req, res) => {
@@ -109,6 +113,18 @@ router.get('/', (req, res) => {
             res.json(err)
         })
     })
+
+router.get('/my', (req, res) => {
+    // find the fruits associated with the logged in user
+    Character.find({ owner: req.session.userId })
+        .then(characters => {
+            res.render('characters/index', { characters })
+        })
+        .catch(error => {
+            console.log(error)
+            res.json({ error })
+        })
+})   
 
 // show route - GOES LAST ; show one character at a time in detail
 router.get('/:id', (req, res) => {
