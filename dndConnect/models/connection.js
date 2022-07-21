@@ -14,12 +14,12 @@ const config = {
 }
 
 // now connect mongoDB to mongoose
-mongoose.connect(MONGODB_URI, config)
+mongoose.connect(DATABASE_URI, config)
 
 // open and close db connection
 mongoose.connection
-    .on('open', () => console.log('Connected to Atlas'))
-    .on('close', () => console.log('Disconnected from Atlas'))
+    .on('open', () => console.log('Connected to Mongoose'))
+    .on('close', () => console.log('Disconnected from Mongoose'))
     .on('error', err => console.error(err))
 
 module.exports = mongoose

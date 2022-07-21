@@ -38,7 +38,7 @@ router.post('/signup', async (req, res) => {
     // on success, redirect to the login page
         .then(user => {
         console.log('this is the new user', user)
-        res.redirect('users/login')
+        res.redirect('/users/login')
     })
     // on error
     .catch(error => {
@@ -76,7 +76,6 @@ router.post('/login', async (req, res) => {
                 } else {
                     // if password incorrect
                 res.json({ error: 'username or password incorrect' })
-                res.redirect('/login')
             }
         }
     })
@@ -90,7 +89,6 @@ router.get('/logout', (req, res) => {
     req.session.destroy(ret => {
         console.log('this is returned from req.session.destroy', ret)
         console.log('session has been destroyed')
-        console.log(req.session)
         res.redirect('/characters')
     })
 })
